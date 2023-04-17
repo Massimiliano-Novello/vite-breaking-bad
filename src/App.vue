@@ -11,14 +11,15 @@ export default {
   },
   data () {
     return {
-      store
+      store: store
     }
   },
   mounted () {
     axios.get(store.apiUrl).then((resp) => {
-      const myData = resp.data.data
-      const firstDate = myData.splice(0, 20);
-      console.log(firstDate);
+      // const myData = resp.data.data
+      // const firstDate = myData.splice(0, 20);
+      // console.log(firstDate);
+      this.store.cards = resp.data.data
     })
   }
 }

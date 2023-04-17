@@ -8,11 +8,11 @@ export default {
 </script>
 
 <template>
-  <div class="card">
-    <img src="https://images.ygoprodeck.com/images/cards_small/34541863.jpg" alt="">
-    <div class="card-content">
-        <h4>Ciao</h4>
-        <p>come va</p>
+  <div class="card gy-3">
+    <img :src="card.card_images[0].image_url_small" alt="">
+    <div class="card-content text-center px-2">
+        <h4 class="my-3">{{ card.name }}</h4>
+        <p>{{ card.archetype }}</p>
     </div>
   </div>
 </template>
@@ -20,8 +20,19 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+    border: none;
     .card-content {
         background-color: orange;
+        height: 100%;
+
+        h4 {
+            font-size: 1rem;
+            color: white;
+        }
+
+        p {
+            font-size: .9rem;
+        }
     }
 }
 

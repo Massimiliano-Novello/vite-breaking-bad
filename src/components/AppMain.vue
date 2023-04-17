@@ -23,9 +23,9 @@ export default {
         <option value="">livello 2</option>
         <option value="">livello 3</option>
     </select>
-    <div class="content d-flex justify-content-start align-items-center ">
-        <div class="card-section row row-cols-5">
-            <AppContent />
+    <div class="content d-flex justify-content-start align-items-center">
+        <div class="card-section row row-cols-5 p-4">
+            <AppContent v-for="item in store.cards" :key="item.id" :card="item"/>
         </div>
     </div>
  </main>
@@ -33,7 +33,6 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-    height: 700px;
     background-color: orange;
 
     .content {
@@ -44,6 +43,7 @@ export default {
         .card-section {
             width: 100%;
             height: 100%;
+            margin-left: 0;
         }
 
     }
