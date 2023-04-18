@@ -6,7 +6,7 @@ export default {
     data() {
         return {
             store,
-            archetypeOption: ["Alien", "Ally of Justice", "Anciet Gear"]
+            archetypeOption: ["Alien", "Ally of Justice", "Ancient Gear"]
         }
     }
 }

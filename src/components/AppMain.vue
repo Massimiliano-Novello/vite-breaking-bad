@@ -17,14 +17,16 @@ export default {
     },
     methods: {
         getSelectArchetype () {
-            axios.get(store.apiUrl, {
-                params: {
-                    archetype: this.store.archetypeSelect
-                }
-            }).then((resp) => {
-                console.log(resp.data.data);
-                this.store.archetypeSelect = resp.data.data
-            })
+            const params = {}
+             if(this.store.archetypeSelect) {
+                params.archetype = this.store.archetypeSelect
+             }
+             axios.get(store.apiUrl, {
+                params
+             }).then((resp) => {
+                console.log(resp);
+                this.store.cards = resp.data.data
+             })
         }
     }
 }
@@ -39,6 +41,7 @@ export default {
             <AppContent v-for="item in store.cards" :key="item.id" :card="item"/>
         </div>
     </div>
+    <h5>{{ store.error }}</h5>
  </main>
 </template>
 
