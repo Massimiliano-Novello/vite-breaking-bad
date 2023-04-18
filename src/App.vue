@@ -7,7 +7,7 @@ import { store } from "./store"
 export default {
   components: {
     AppHeader,
-    AppMain
+    AppMain,
   },
   data () {
     return {
@@ -16,9 +16,6 @@ export default {
   },
   mounted () {
     axios.get(store.apiUrl).then((resp) => {
-      // const myData = resp.data.data
-      // const firstDate = myData.splice(0, 20);
-      // console.log(firstDate);
       this.store.cards = resp.data.data
     })
   }

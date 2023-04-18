@@ -1,15 +1,30 @@
 <script>
 import AppContent from './AppContent.vue';
+import SearchBar from './SearchBar.vue';
 import { store } from "../store";
+import axios from 'axios';
 
 export default {
     name: "AppMain",
     components: {
-        AppContent
+        AppContent,
+        SearchBar
     },
     data () {
         return {
             store
+        }
+    },
+    methods: {
+        getSelectArchetype () {
+            axios.get(store.apiUrl, {
+                params: {
+                    archetype: this.store.archetypeSelect
+                }
+            }).then((resp) => {
+                console.log(resp.data.data);
+                this.store.archetypeSelect = resp.data.data
+            })
         }
     }
 }
@@ -18,11 +33,7 @@ export default {
 
 <template>
  <main class="main">
-    <select name="" id="">
-        <option value="">livello 1</option>
-        <option value="">livello 2</option>
-        <option value="">livello 3</option>
-    </select>
+    <SearchBar  @search="getSelectArchetype"/>
     <div class="content d-flex justify-content-start align-items-center">
         <div class="card-section row row-cols-5 p-4">
             <AppContent v-for="item in store.cards" :key="item.id" :card="item"/>
